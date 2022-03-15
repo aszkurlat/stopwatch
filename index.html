@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html lang="pl">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Stopwatch</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <div class="stopwatch">
-        <div class="time">00:00</div>
-        <button class="start">START</button>
-        <button class="reset">RESET</button>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="stopwatch">
+        <h1>Stopwatch</h1>
+        <div class="display">00:00:000</div>
+        <div class="buttons">
+          <button class="start">START</button>
+          <button class="stop">STOP</button>
+          <button class="reset">RESET</button>
+        </div>
+      </div>
     </div>
     <script src="stopwatch.js"></script>
-</body>
-
+  </body>
 </html>
