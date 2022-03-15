@@ -1,37 +1,45 @@
-const startBtn = document.querySelector('button.start');
-const resetBtn = document.querySelector('button.reset');
-const counter = document.querySelector('div.time');
-let time = 0;
-let active = false;
+const startBtn = document.querySelector("button.start");
+const resetBtn = document.querySelector("button.reset");
+const stopBtn = document.querySelector("button.stop");
+const display = document.querySelector("div.display");
+
+let [ms, secs, mins] = [0, 0, 0];
 let idInterval;
 
-
 const startTimer = () => {
-    if (!active) {
-        active = !active;
-        startBtn.textContent = "STOP";
-        startBtn.style.backgroundColor = "#b73131";
-        idInterval = setInterval(startTime, 10);
+  idInterval = setInterval(start, 10);
+};
 
-
-    } else if (active) {
-        active = !active;
-        startBtn.textContent = "START";
-        startBtn.style.backgroundColor = "#d43c3c";
-        clearInterval(idInterval);
+const start = () => {
+  ms += 10;
+  if (ms == 1000) {
+    ms = 0;
+    secs++;
+    if (secs == 60) {
+      secs = 0;
+      mins++;
+      if (mins == 60) {
+        mins = 0;
+      }
     }
-}
-const resetTime = () => {
-    active = !active;
-    clearInterval(idInterval);
-    time = 0;
-    counter.textContent = "00:00";
-    resetBtn.style.backgroundColor = "#b73131";
-}
-const startTime = () => {
-    time++;
-    counter.textContent = (time / 100).toFixed(2) < 10 ? "0" + (time / 100).toFixed(2) : (time / 100).toFixed(2);
-}
+  }
+  let min = mins < 10 ? "0" + mins : mins;
+  let sec = secs < 10 ? "0" + secs : secs;
+  let milisec = ms < 10 ? "00" + ms : ms < 100 ? "0" + ms : ms;
+  display.innerHTML = `${min}:${sec}:${milisec}`;
+};
 
-startBtn.addEventListener('click', startTimer);
-resetBtn.addEventListener('click', resetTime);
+const stopTimer = () => {
+  clearInterval(idInterval);
+  idInterval = null;
+};
+
+const resetTimer = () => {
+  stopTimer();
+  [ms, secs, mins] = [0, 0, 0];
+  display.innerHTML = "00:00:000";
+};
+
+startBtn.addEventListener("click", startTimer);
+stopBtn.addEventListener("click", stopTimer);
+resetBtn.addEventListener("click", resetTimer);
