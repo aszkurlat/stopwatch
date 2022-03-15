@@ -1,46 +1,102 @@
- * {
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
-     font-family: monospace;
- }
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Condensed", "Arial", sans-serif;
+}
+html,
+body {
+  height: 100vh;
+}
+body {
+  height: 100%;
+  background-image: url("img/sprinter.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.wrapper {
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+h1 {
+  align-self: center;
+  color: rgb(207, 200, 199);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 53px;
+  margin-bottom: 65px;
+}
+.stopwatch {
+  display: flex;
+  flex-direction: column;
+  padding-top: 6%;
+}
+.display {
+  width: 300px;
+  padding: 20px 0;
+  align-self: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  font-size: 50px;
+  text-align: center;
+}
+.buttons {
+  width: 330px;
+  margin-top: 30px;
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
+}
+button {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  font-size: 21px;
+  outline: 0;
+  border: none;
+  color: rgb(205, 212, 212);
+  cursor: pointer;
+}
+button.start {
+  background-color: green;
+}
+button.stop {
+  background-color: rgb(207, 40, 40);
+}
+button.reset {
+  background-color: rgb(87, 24, 87);
+}
 
- body {
-     background-color: rgb(138, 138, 138);
- }
-
- .stopwatch {
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-     background-color: rgb(73, 71, 71);
-     border: 1px solid rgb(36, 35, 35);
-     border-radius: 10px;
- }
-
- .time {
-     min-height: 25vh;
-     min-width: 25vw;
-     background-color: rgb(109, 192, 224);
-     font-weight: 600;
-     border-radius: 5px;
-     border: 1px solid black;
-     font-size: 50px;
-     text-align: center;
-     line-height: 30vh;
-     margin: 5vh;
- }
-
- button {
-     min-width: 15vw;
-     padding: 1vh;
-     font-size: 25px;
-     margin: 30px;
-     border: none;
-     border-radius: 4px;
-     outline: 0;
-     background-color: #d43c3c;
-     color: rgb(205, 212, 212);
-     cursor: pointer;
- }
+@media (max-width: 480px) {
+  .stopwatch {
+    padding-top: 35%;
+  }
+  .display {
+    width: 250px;
+  }
+  .buttons {
+    width: 280px;
+  }
+}
+@media (max-height: 700px) {
+  .stopwatch {
+    padding-top: 3%;
+  }
+  h1 {
+    margin-bottom: 20px;
+    font-size: 45px;
+  }
+  .display {
+    font-size: 35px;
+  }
+  .buttons {
+    margin-top: 25px;
+  }
+  button {
+    height: 70px;
+    width: 70px;
+    font-size: 19px;
+  }
+}
